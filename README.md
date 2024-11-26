@@ -37,14 +37,14 @@
 1. Open the Arduino IDE on your computer (or Raspberry Pi if installed).
 2. Write a simple program to send data over Serial. For example:
 
-`void setup() {
- Serial.begin(9600); // Set baud rate to 9600
+void setup() {
+  Serial.begin(9600); // Set baud rate to 9600
 }
 
- void loop() {
- Serial.println("Hello from Arduino Mega!"); // Send data every second
- delay(1000);
-}`
+void loop() {
+  Serial.println("Hello from Arduino Mega!"); // Send data every second
+  delay(1000);
+}
 
 #### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ####
 1. After connecting the Arduino, list the connected devices:
@@ -60,59 +60,34 @@
 
 2. Add the following code to the script:
 
-`import serial`
+import serial
+import time
 
-`import time`
+# Specify the port and baud rate (match Arduino sketch)
+arduino_port = '/dev/ttyUSB0'  # Update based on your device
+baud_rate = 9600
 
+try:
+    # Initialize serial communication
+    ser = serial.Serial(arduino_port, baud_rate, timeout=1)
+    time.sleep(2)  # Allow time for connection setup
+    print("Connection to Arduino established!")
 
+    while True:
+        if ser.in_waiting > 0:  # Check for incoming data
+            line = ser.readline().decode('utf-8').strip()
+            print(f"Received: {line}")
 
-`# Specify the port and baud rate (match Arduino sketch)`
+except serial.SerialException as e:
+    print(f"Error: {e}")
 
-`arduino_port = '/dev/ttyUSB0'  # Update based on your device`
+except KeyboardInterrupt:
+    print("Exiting program.")
 
-`baud_rate = 9600`
-
-
-
-`try:`
-
-   /# Initialize serial communication
-   
-   `ser = serial.Serial(arduino_port, baud_rate, timeout=1)`
-   
-   `time.sleep(2)  # Allow time for connection setup`
-   
-   `print("Connection to Arduino established!")`
-
-  
-  `while True:`
-  
-       `if ser.in_waiting > 0:  # Check for incoming data
-       
-           line = ser.readline().decode('utf-8').strip()
-           
-           print(f"Received: {line}")`
-
-
-
-`except serial.SerialException as e:`
-
-   `print(f"Error: {e}")`
-
-
-`except KeyboardInterrupt:`
-
-   `print("Exiting program.")`
-
-
-`finally:`
-
-   `if 'ser' in locals() and ser.is_open:`
-   
-       `ser.close()`
-       
-       `print("Serial port closed.")`  
-
+finally:
+    if 'ser' in locals() and ser.is_open:
+        ser.close()
+        print("Serial port closed.")
 
 3. Save the script (Ctrl+O, Enter, Ctrl+X).
 

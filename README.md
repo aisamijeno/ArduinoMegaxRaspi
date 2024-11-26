@@ -22,45 +22,50 @@
 1. Open a terminal on the Raspberry Pi.
 2. Update the Raspberry Pi OS:
 
-    `sudo apt update && sudo apt upgrade -y`
+`sudo apt update && sudo apt upgrade -y`
 
 3. Install Python and 'pyserial':
 
-   ```sudo apt install python3 python3-pip -y
-   pip3 install pyserial```
+```
+sudo apt install python3 python3-pip -y
+pip3 install pyserial
+```
 
 5. (Optional) Install the Arduino IDE:
 
-   `sudo apt install arduino -y`
+`sudo apt install arduino -y`
 
 #### STEP 3: WRITE A TEST SKETCH FOR THE ARDUINO MEGA #### 
 1. Open the Arduino IDE on your computer (or Raspberry Pi if installed).
 2. Write a simple program to send data over Serial. For example:
 
-```void setup() {
+```
+void setup() {
   Serial.begin(9600); // Set baud rate to 9600
 }
 
 void loop() {
   Serial.println("Hello from Arduino Mega!"); // Send data every second
   delay(1000);
-}```
+}
+```
 
 #### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ####
 1. After connecting the Arduino, list the connected devices:
 
-  `ls /dev/tty*`
+`ls /dev/tty*`
  
 3. Identify the Arduino Mega port, typically named something like /dev/ttyUSB0 or /dev/ttyACM0.
 
 #### STEP 5: WRITE A PYTHON SCRIPT TO READ DATA FROM ARDUINO ####
 1. Create a Python script on the Raspberry Pi:
 
-  `nano read_arduino.py`
+`nano read_arduino.py`
 
 2. Add the following code to the script:
 
-```import serial
+```
+import serial
 import time
 
 # Specify the port and baud rate (match Arduino sketch)
@@ -88,13 +93,14 @@ finally:
     if 'ser' in locals() and ser.is_open:
         ser.close()
         print("Serial port closed.")
+```
 
 3. Save the script (Ctrl+O, Enter, Ctrl+X).
 
 #### STEP 6: RUN THE PYTHON SCRIPT #### 
 1. Execute the script:
 
-  `python3 read_arduino.py`
+`python3 read_arduino.py`
  
 2. You should see messages from the Arduino Mega (e.g., "Hello from Arduino Mega!") displayed in the terminal.
 
@@ -102,7 +108,7 @@ finally:
 - Port Not Found: Double-check the port name using 'ls /dev/tty*'.
 - Permission Denied: Add your user to the 'dialout' group:
 
-  `sudo usermod -aG dialout $(whoami)`
+`sudo usermod -aG dialout $(whoami)`
 
 - Reboot the Raspberry Pi.
 

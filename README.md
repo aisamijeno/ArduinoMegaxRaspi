@@ -26,9 +26,8 @@
 
 3. Install Python and 'pyserial':
 
-   `sudo apt install python3 python3-pip -y`
-   
-   `pip3 install pyserial`
+   `sudo apt install python3 python3-pip -y
+    pip3 install pyserial`
 
 5. (Optional) Install the Arduino IDE:
 

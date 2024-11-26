@@ -1,6 +1,6 @@
-## Step-by-Step Procedure to Integrate Arduino Mega with Raspberry Pi 4B Using USB Port Communication ##
+# Step-by-Step Procedure to Integrate Arduino Mega with Raspberry Pi 4B Using USB Port Communication #
 
-HARDWARE AND SOFTWARE REQUIREMENTS
+## HARDWARE AND SOFTWARE REQUIREMENTS ##
 
 1. Hardware:
   - Raspberry Pi 4B (with Raspbian OS installed on a microSD card).
@@ -63,12 +63,12 @@ STEP 5: WRITE A PYTHON SCRIPT TO READ DATA FROM ARDUINO
 import serial
 import time
 
-# Specify the port and baud rate (match Arduino sketch)
+/# Specify the port and baud rate (match Arduino sketch)
 arduino_port = '/dev/ttyUSB0'  # Update based on your device
 baud_rate = 9600
 
 try:
-   # Initialize serial communication
+   /# Initialize serial communication
    ser = serial.Serial(arduino_port, baud_rate, timeout=1)
    time.sleep(2)  # Allow time for connection setup
    print("Connection to Arduino established!")

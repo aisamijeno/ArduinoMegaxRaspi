@@ -22,12 +22,12 @@
 1. Open a terminal on the Raspberry Pi.
 2. Update the Raspberry Pi OS:
 
-  `sudo apt update && sudo apt upgrade -y`
+    `sudo apt update && sudo apt upgrade -y`
 
 3. Install Python and 'pyserial':
 
-   sudo apt install python3 python3-pip -y
-  pip3 install pyserial
+   `sudo apt install python3 python3-pip -y`
+   `pip3 install pyserial`
 
 4. (Optional) Install the Arduino IDE:
 

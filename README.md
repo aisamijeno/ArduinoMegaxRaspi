@@ -27,7 +27,7 @@
 3. Install Python and 'pyserial':
 
    ```sudo apt install python3 python3-pip -y
-   pip3 install pyserial
+   pip3 install pyserial```
 
 5. (Optional) Install the Arduino IDE:
 
@@ -44,7 +44,7 @@
 void loop() {
   Serial.println("Hello from Arduino Mega!"); // Send data every second
   delay(1000);
-}
+}```
 
 #### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ####
 1. After connecting the Arduino, list the connected devices:

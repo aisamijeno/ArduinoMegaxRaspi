@@ -27,17 +27,18 @@
 3. Install Python and 'pyserial':
 
    `sudo apt install python3 python3-pip -y`
+   
    `pip3 install pyserial`
 
-4. (Optional) Install the Arduino IDE:
+5. (Optional) Install the Arduino IDE:
 
-  sudo apt install arduino -y
+   `sudo apt install arduino -y`
 
 #### STEP 3: WRITE A TEST SKETCH FOR THE ARDUINO MEGA #### 
 1. Open the Arduino IDE on your computer (or Raspberry Pi if installed).
 2. Write a simple program to send data over Serial. For example:
 
-void setup() {
+`void setup() {
  Serial.begin(9600); // Set baud rate to 9600
 }
 
@@ -45,7 +46,7 @@ void loop() {
  Serial.println("Hello from Arduino Mega!"); // Send data every second
  delay(1000);
 }
-
+`
 #### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ####
 1. After connecting the Arduino, list the connected devices:
 

@@ -27,6 +27,7 @@
 3. Install Python and 'pyserial':
 
    `sudo apt install python3 python3-pip -y`
+
    `pip3 install pyserial`
 
 5. (Optional) Install the Arduino IDE:
@@ -38,63 +39,68 @@
 2. Write a simple program to send data over Serial. For example:
 
 `void setup() {`
+ 
  `Serial.begin(9600); // Set baud rate to 9600`
+
 `}`
 
 `void loop() {`
+
  `Serial.println("Hello from Arduino Mega!"); // Send data every second`
+ 
  `delay(1000);`
+
 `}`
-`
+
 #### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ####
 1. After connecting the Arduino, list the connected devices:
 
-  ls /dev/tty*
+  `ls /dev/tty*`
  
-2. Identify the Arduino Mega port, typically named something like /dev/ttyUSB0 or /dev/ttyACM0.
+3. Identify the Arduino Mega port, typically named something like /dev/ttyUSB0 or /dev/ttyACM0.
 
 #### STEP 5: WRITE A PYTHON SCRIPT TO READ DATA FROM ARDUINO ####
 1. Create a Python script on the Raspberry Pi:
 
-  nano read_arduino.py
+  `nano read_arduino.py`
 
 2. Add the following code to the script:
 
-import serial
-import time
+`import serial`
+`import time`
 
-/# Specify the port and baud rate (match Arduino sketch)
-arduino_port = '/dev/ttyUSB0'  # Update based on your device
-baud_rate = 9600
+`# Specify the port and baud rate (match Arduino sketch)`
+`arduino_port = '/dev/ttyUSB0'  # Update based on your device`
+`baud_rate = 9600`
 
-try:
-   /# Initialize serial communication
-   ser = serial.Serial(arduino_port, baud_rate, timeout=1)
-   time.sleep(2)  # Allow time for connection setup
-   print("Connection to Arduino established!")
+`try:`
+   `/# Initialize serial communication`
+   `ser = serial.Serial(arduino_port, baud_rate, timeout=1)`
+   `time.sleep(2)  # Allow time for connection setup`
+   `print("Connection to Arduino established!")`
 
-   while True:
-       if ser.in_waiting > 0:  # Check for incoming data
-           line = ser.readline().decode('utf-8').strip()
-           print(f"Received: {line}")
+  `while True:`
+       `if ser.in_waiting > 0:  # Check for incoming data`
+           `line = ser.readline().decode('utf-8').strip()`
+           `print(f"Received: {line}")`
 
-except serial.SerialException as e:
-   print(f"Error: {e}")
+`except serial.SerialException as e:`
+   `print(f"Error: {e}")`
 
-except KeyboardInterrupt:
-   print("Exiting program.")
+`except KeyboardInterrupt:`
+   `print("Exiting program.")`
 
-finally:
-   if 'ser' in locals() and ser.is_open:
-       ser.close()
-       print("Serial port closed.")  
+`finally:`
+   `if 'ser' in locals() and ser.is_open:`
+       `ser.close()`
+       `print("Serial port closed.")`  
 
 3. Save the script (Ctrl+O, Enter, Ctrl+X).
 
 #### STEP 6: RUN THE PYTHON SCRIPT #### 
 1. Execute the script:
 
-  python3 read_arduino.py
+  `python3 read_arduino.py`
  
 2. You should see messages from the Arduino Mega (e.g., "Hello from Arduino Mega!") displayed in the terminal.
 
@@ -102,7 +108,7 @@ finally:
 - Port Not Found: Double-check the port name using 'ls /dev/tty*'.
 - Permission Denied: Add your user to the 'dialout' group:
 
-  sudo usermod -aG dialout $(whoami)
+  `sudo usermod -aG dialout $(whoami)`
 
 - Reboot the Raspberry Pi.
 

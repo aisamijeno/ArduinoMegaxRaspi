@@ -76,7 +76,7 @@
 
 `try:`
 
-   `/# Initialize serial communication`
+   /# Initialize serial communication
    
    `ser = serial.Serial(arduino_port, baud_rate, timeout=1)`
    
@@ -87,11 +87,11 @@
   
   `while True:`
   
-       `if ser.in_waiting > 0:  # Check for incoming data`
+       `if ser.in_waiting > 0:  # Check for incoming data
        
-           `line = ser.readline().decode('utf-8').strip()`
+           line = ser.readline().decode('utf-8').strip()
            
-           `print(f"Received: {line}")`
+           print(f"Received: {line}")`
 
 
 

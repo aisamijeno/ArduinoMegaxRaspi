@@ -26,8 +26,8 @@
 
 3. Install Python and 'pyserial':
 
-   `sudo apt install python3 python3-pip -y
-   pip3 install pyserial`
+   ```sudo apt install python3 python3-pip -y
+   pip3 install pyserial```
 
 5. (Optional) Install the Arduino IDE:
 
@@ -37,14 +37,14 @@
 1. Open the Arduino IDE on your computer (or Raspberry Pi if installed).
 2. Write a simple program to send data over Serial. For example:
 
-void setup() {
+```void setup() {
   Serial.begin(9600); // Set baud rate to 9600
 }
 
 void loop() {
   Serial.println("Hello from Arduino Mega!"); // Send data every second
   delay(1000);
-}
+}```
 
 #### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ####
 1. After connecting the Arduino, list the connected devices:
@@ -60,7 +60,7 @@ void loop() {
 
 2. Add the following code to the script:
 
-import serial
+```import serial
 import time
 
 # Specify the port and baud rate (match Arduino sketch)
@@ -87,7 +87,7 @@ except KeyboardInterrupt:
 finally:
     if 'ser' in locals() and ser.is_open:
         ser.close()
-        print("Serial port closed.")
+        print("Serial port closed.")```
 
 3. Save the script (Ctrl+O, Enter, Ctrl+X).
 

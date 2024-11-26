@@ -115,8 +115,8 @@ python3 read_arduino.py
 2. You should see messages from the Arduino Mega (e.g., "Hello from Arduino Mega!") displayed in the terminal.
 
 #### STEP 7: TROUBLESHOOTING #### 
-- Port Not Found: Double-check the port name using 'ls /dev/tty*'.
-- Permission Denied: Add your user to the 'dialout' group:
+- Port Not Found: Double-check the port name using `ls /dev/tty*`.
+- Permission Denied: Add your user to the `dialout` group:
 
 `
 sudo usermod -aG dialout $(whoami)

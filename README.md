@@ -2,23 +2,23 @@
 
 ## HARDWARE AND SOFTWARE REQUIREMENTS ##
 
-### 1. Hardware: ### 
+#### 1. Hardware: #### 
   - Raspberry Pi 4B (with Raspbian OS installed on a microSD card).
   - Arduino Mega 2560.
   - USB cable to connect Arduino Mega to Raspberry Pi.
   - Power supply for the Raspberry Pi and Arduino Mega.
 
-### 2. Software: ### 
+#### 2. Software: #### 
   - Arduino IDE (installed on Raspberry Pi or another PC).
   - Python with `pyserial` library on Raspberry Pi.
 
 ## PROCEDURE ##
 
-### STEP 1: HARDWARE CONNECTION ### 
+#### STEP 1: HARDWARE CONNECTION ####
 1. Connect the Arduino Mega to the Raspberry Pi using a USB cable.
 2. Ensure both devices are powered appropriately.
 
-### STEP 2: INSTALL REQUIRED SOFTWARE ON RASPBERRY PI ### 
+#### STEP 2: INSTALL REQUIRED SOFTWARE ON RASPBERRY PI #### 
 1. Open a terminal on the Raspberry Pi.
 2. Update the Raspberry Pi OS:
 
@@ -33,7 +33,7 @@
 
   sudo apt install arduino -y
 
-### STEP 3: WRITE A TEST SKETCH FOR THE ARDUINO MEGA ### 
+#### STEP 3: WRITE A TEST SKETCH FOR THE ARDUINO MEGA #### 
 1. Open the Arduino IDE on your computer (or Raspberry Pi if installed).
 2. Write a simple program to send data over Serial. For example:
 
@@ -46,14 +46,14 @@ void loop() {
  delay(1000);
 }
 
-### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ### 
+#### STEP 4: IDENTIFY THE USB PORT ON RASPBERRY PI ####
 1. After connecting the Arduino, list the connected devices:
 
   ls /dev/tty*
  
 2. Identify the Arduino Mega port, typically named something like /dev/ttyUSB0 or /dev/ttyACM0.
 
-### STEP 5: WRITE A PYTHON SCRIPT TO READ DATA FROM ARDUINO ### 
+#### STEP 5: WRITE A PYTHON SCRIPT TO READ DATA FROM ARDUINO ####
 1. Create a Python script on the Raspberry Pi:
 
   nano read_arduino.py
@@ -91,14 +91,14 @@ finally:
 
 3. Save the script (Ctrl+O, Enter, Ctrl+X).
 
-### STEP 6: RUN THE PYTHON SCRIPT ### 
+#### STEP 6: RUN THE PYTHON SCRIPT #### 
 1. Execute the script:
 
   python3 read_arduino.py
  
 2. You should see messages from the Arduino Mega (e.g., "Hello from Arduino Mega!") displayed in the terminal.
 
-### STEP 7: TROUBLESHOOTING ### 
+#### STEP 7: TROUBLESHOOTING #### 
 - Port Not Found: Double-check the port name using 'ls /dev/tty*'.
 - Permission Denied: Add your user to the 'dialout' group:
 
@@ -106,6 +106,6 @@ finally:
 
 - Reboot the Raspberry Pi.
 
-### SUMMARY: ### 
+#### SUMMARY: #### 
 
 By following these steps, you can establish communication between the Arduino Mega and Raspberry Pi 4B via the USB port. You can extend this setup to send and receive commands, transfer sensor data, or control actuators as needed.

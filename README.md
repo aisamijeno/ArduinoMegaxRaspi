@@ -1,4 +1,4 @@
-# Step-by-Step Procedure to Integrate Arduino Mega with Raspberry Pi 4B Using USB Port Communication #
+# Step-by-Step Procedure to Integrate Arduino Mega with Raspberry Pi Using USB Port Communication #
 
 ## HARDWARE AND SOFTWARE REQUIREMENTS ##
 
